@@ -1,0 +1,23 @@
+<!-- Event Binding -->
+<label for="eventBinding">Event binding</label>
+<input id="eventBinding" type="string" class="form-control" (input)="onUpdateServerName($event)" />
+<br />
+<label for="twoWay">Two way binding</label>
+<input id="twoWay" type="String" class="form-control" [(ngModel)]="serverName" />
+<p>{{ serverName }}</p>
+
+
+<!-- [Property] Binding  -->
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+
+<!-- String interpolation -->
+<p>{{ 'Add server: ' + allowNewServer }}</p>
+<!-- * is required because its structural (it changes the dom) -->
+<p *ngIf="serverCreated; else noServer" green>{{ 'Status: ' + serverCreationStatus }}</p>
+
+<!-- # = LocalReference -->
+<ng-template #noServer>
+  <p>No server was created!</p>
+</ng-template>
+
+<app-server *ngFor="let server of servers"></app-server>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form class="form-group" (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+        <div class="form-group">
+          <label for="emailInput">Email:</label>
+          <input id="emailInput" class="form-control" name="email" ngModel type="email" required email />
+          <small *ngIf="(userForm.submitted && userForm.form.controls.email.invalid) || (userForm.touched && userForm.invalid && userForm.form.controls.email.invalid)"
+            id="emailHelp" class="text-muted red">Please enter a correct email.</small>
+        </div>
+        <div class="form-group">
+          <label for="subscriptionInput">Subscription Type:</label>
+          <select id="subscriptionInput" class="form-control" id="exampleSelect1" name="subscription" ngModel required>
+            <option>Basic</option>
+            <option>Advanced</option>
+            <option>Pro</option>
+          </select>
+          <small *ngIf="(userForm.submitted && userForm.form.controls.subscription.invalid) || (userForm.touched && userForm.invalid && userForm.form.controls.subscription.invalid)"
+            id="emailHelp" class="text-muted red">Please select a subscription</small>
+        </div>
+
+        <div class="form-group">
+          <label for="pwInput">Password:</label>
+          <input id="pwInput" class="form-control" name="password" ngModel type="password" required />
+          <small *ngIf="(userForm.submitted && userForm.form.controls.password.invalid) || (userForm.touched && userForm.invalid && userForm.form.controls.password.invalid)"
+            id="emailHelp" class="text-muted red">Please enter a valid password</small>
+        </div>
+        <h3 class="red" *ngIf="userForm.submitted && userForm.invalid">Enter correct Data</h3>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div *ngIf="userForm.submitted && userForm.valid">
+        <p>userData:  {{ userForm.value | json }}</p>
+      </div>
+    </div>
+  </div>
+</div>

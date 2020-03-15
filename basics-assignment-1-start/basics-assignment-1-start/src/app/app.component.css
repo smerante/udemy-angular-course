@@ -1,0 +1,36 @@
+.warningContainer{
+  display:table;
+  border: 2px solid darkred;
+  background-color: red;
+  border-radius: 10px;
+  width: 80%;
+  height:60px;
+  margin: 30px auto;
+}
+.warningContainer .warning{
+  display:table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+.successContainer{
+  display:table;
+  background-color: green;
+  border: 2px solid darkgreen;
+  border-radius: 10px;
+  width: 80%;
+  height:60px;
+  margin: 30px auto;
+}
+.successContainer .success{
+  display:table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  font-family: 'sans-serif';
+  font-weight: 500;
+  color: white;
+}

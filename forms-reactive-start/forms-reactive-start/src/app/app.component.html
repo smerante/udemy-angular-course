@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input formControlName="userName" type="text" id="username" class="form-control">
+            <span *ngIf="signUpForm.get('userData.userName').invalid && signUpForm.get('userData.userName').touched"
+              class="help-block">
+              <span *ngIf="signUpForm.get('userData.userName').errors['blackListed']">
+                User name is not valid<br/>
+              </span>
+              Username required</span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input formControlName="email" type="text" id="email" class="form-control">
+            <span *ngIf="signUpForm.get('userData.email').invalid && signUpForm.get('userData.email').touched" class="help-block">Please
+              enter a valid email</span>
+          </div>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input formControlName="gender" type="radio" [value]="gender">{{ gender }}
+          </label>
+        </div>
+        <div class="form-group">
+          <div formArrayName="hobbies">
+            <div *ngFor="let h of signUpForm.get('hobbies').controls; let i = index;" class="form-group">
+              <input type="text" class="form-control" [formControlName]="i" />
+            </div>
+          </div>
+          <h4>Your hobbies</h4>
+          <button class="btn btn-default" (click)="onAddHoby()" type="button">
+            Add Hobby
+          </button>
+        </div>
+        <span *ngIf="signUpForm.invalid && signUpForm.touched" class="help-block">Please enter valid data</span>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
